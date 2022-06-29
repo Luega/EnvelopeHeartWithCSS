@@ -1,0 +1,83 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Some help with colors */
+:root {
+    --letter-top: #eee;
+    --letter-right: #ddd;
+    --letter-bottom: #ccc;
+    --letter-left: #ccc;
+    --heart: #ff3838;
+  }
+
+/* Boring code just to center our mail :-) */
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Now let's create our envelope adding some amazing borders to our div .card!
+WOW! The envelope is already done! :-D  */
+.card {
+    width: 0;
+    height: 0;
+    border-top: 100px solid var(--letter-top);
+    border-right: 170px solid var(--letter-right);
+    border-bottom: 100px solid var(--letter-bottom);
+    border-left: 170px solid var(--letter-left);
+}
+
+/* Now we are going to create our heart! So nice! :-)  */
+/* We start to transform our div .heart in to a little red square */
+.heart {
+    width: 32px;
+    height: 32px;
+    background-color: var(--heart);
+    /* We have to translate it by its half to center our heart and rotate it. You will soon find out why ... :-D */
+    transform: translate(-50%, -50%) rotate(45deg);
+    /* Let´s give some beatting animation to this heart! Amazing! :-) (Just add it at the end if you want, scroll until the end) */
+    animation: heartbeat 2.4s linear infinite;
+}
+
+/* Now. Let´s create two other squares after and before the first one! 
+We will need the absolute position and the translate!
+Now some border-radius to make the two squares become circles and.. What?!... Now it´s looks like a heart! I love it! :-D  */
+.heart::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--heart);
+    transform: translateY(-50%);
+    border-radius: 50%;
+}
+.heart::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--heart);
+    transform: translateX(-50%);
+    border-radius: 50%;
+}
+
+/* Let´s give some beatting animation to this heart! Amazing! :-) (Just add it at the end if you want) */
+@keyframes heartbeat {
+    0% {transform: translate(-50%, -50%) rotate(45deg) scale(1);}
+    25% {transform: translate(-50%, -50%) rotate(45deg) scale(1);}
+    30% {transform: translate(-50%, -50%) rotate(45deg) scale(1.8);}
+    50% {transform: translate(-50%, -50%) rotate(45deg) scale(1.4);}
+    70% {transform: translate(-50%, -50%) rotate(45deg) scale(1.8);}
+    100% {transform: translate(-50%, -50%) rotate(45deg) scale(1);}
+}
+
+/* Thank you :-) */
